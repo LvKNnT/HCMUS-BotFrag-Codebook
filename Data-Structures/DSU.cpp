@@ -1,10 +1,5 @@
 #include<bits/stdc++.h>
 using namespace std;
-
-struct Query{
-    int l, r, c;
-};
-
 struct DSU{
     vector<int> parent;
     vector<int> size;
@@ -74,32 +69,5 @@ struct DSU{
         }
     }
 };
-
 int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    int n, q;
-    cin >> n >> q;
-    vector<Query> query(q);
-    vector<int> ans(n+1);
-    for(int i = 0; i < q; i++){
-        cin >> query[i].l >> query[i].r >> query[i].c;
-    }
-    DSU dsu(n+1);
-    for(int i = 0; i <= n; i++){
-        dsu.makeset(i);
-    }
-    for(int i = q-1; i >= 0; i--){
-        int l = query[i].l; l--;
-        int r = query[i].r; r--;
-        int c = query[i].c;
-        for(int v = dsu.findset(l); v <= r; v = dsu.findset(v)){
-            ans[v] = c;
-            dsu.parent[v] = v + 1;
-        }
-    }
-    for(int i = 0; i < n; i++){
-        cout << ans[i] << '\n';
-    }
-    return 0;
 }
