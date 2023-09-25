@@ -14,13 +14,13 @@ struct DSU{
         size[v] = 1;
         rank[v] = 0;
     }
-    int findset(int v){
+    int findset(int v){ //Path Compression
         if(v == parent[v]){
             return v;
         }
         return findset(parent[v]);
     }
-    void unionsizerank(int a, int b){
+    void unionsizerank(int a, int b){ //Ultra Combination
         a = findset(a);
         b = findset(b);
         if(a != b){
@@ -37,7 +37,7 @@ struct DSU{
         }
         size[a] += size[b];
     }
-    void unionsize(int a, int b){
+    void unionsize(int a, int b){ //Path Compression + Size Heuristics
         a = findset(a);
         b = findset(b);
         if(a != b){
@@ -48,7 +48,7 @@ struct DSU{
         parent[b] = a;
         size[a] += size[b];
     }
-    void unionrank(int a, int b){
+    void unionrank(int a, int b){ //Path Compression + Rank Heuristics
         a = findset(a);
         b = findset(b);
         if(a != b){
@@ -61,7 +61,7 @@ struct DSU{
             rank[a]++;
         }
     }
-    void pathcompression(int a, int b){
+    void pathcompression(int a, int b){ //No Heuristics + Path Compression
         a = findset(a);
         b = findset(b);
         if(a != b){
