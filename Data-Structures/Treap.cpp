@@ -66,6 +66,4 @@ pitem newItem(int key){
     return temp;
 }
 int main(){
-    pitem t = NULL;
-    cout << (!t) << '\n';
 }
