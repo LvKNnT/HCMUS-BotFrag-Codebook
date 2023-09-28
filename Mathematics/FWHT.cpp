@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//black magic
 int fpow(int n, long long k, int p = (int)1e9 + 7) {
     int r = 1;
     for (; k; k >>= 1) {
